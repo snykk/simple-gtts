@@ -11,9 +11,7 @@ def main():
     # Save to a custom folder and custom filename
     tts.text_to_speech(
         raw_text=dirty_text,
-        filename="hasil_suara_2.mp3",
-        output_dir="audio_output",
-        is_play_audio=False
+        user="1",
     )
 
 if __name__ == "__main__":

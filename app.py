@@ -31,11 +31,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             text = data['text']
             user_id = data['user_id']
             filename = data.get('filename', 'default.mp3')
-            output_dir = data.get('output_dir', 'output')
-            detect_lang = data.get('detect_lang', False)
-
-            print(user_id)
-            print(type(user_id))
+            # output_dir = data.get('output_dir', 'output')
+            # detect_lang = data.get('detect_lang', False)
 
             # Initialize SimpleGTTS
             tts = SimpleGTTS()
@@ -45,8 +42,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                     raw_text=text,
                     user=str(user_id),
                     filename=filename,
-                    output_dir=output_dir,
-                    is_detect_lang=detect_lang
+                    # output_dir=output_dir,
+                    # is_detect_lang=detect_lang
                 )
 
                 # Send success response
@@ -55,7 +52,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({
                     "message": "Speech generated successfully!",
-                    "file_path": os.path.join(output_dir, output_path)
+                    "file_path": output_path
                 }).encode())
 
             except Exception as e:

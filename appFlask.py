@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import os
 from tts.simple_gtts import SimpleGTTS
 
 app = Flask(__name__)
